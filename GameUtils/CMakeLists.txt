@@ -27,16 +27,18 @@ add_library(${PROJECT_NAME} SHARED ${HEADER_FILES} ${SRC_FILES})
 target_include_directories(${PROJECT_NAME}
                            PUBLIC include)
 
-if(False) #GAMEUTILS_BUILD_TESTS)
+if(GAMEUTILS_BUILD_TESTS)
     set(TEST_HEADER_FILES
         #Add your test header files here
+        tests/unit/GameUtils_test.h
     )
 
     set(TEST_SRC_FILES
         #Add your test source files here
+        tests/main.cpp
     )
 
-    add_executable(${PROJECT_NAME}_test TEST_HEADER_FILES TEST_SRC_FILES)
+    add_executable(${PROJECT_NAME}_test ${TEST_HEADER_FILES} ${TEST_SRC_FILES})
 
     target_include_directories(${PROJECT_NAME}_test
                         PUBLIC include
