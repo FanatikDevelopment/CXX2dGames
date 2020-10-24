@@ -1,0 +1,107 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "create build directory",
+      "type": "shell",
+      "command": "mkdir",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        "-p",
+        "build"
+      ]
+    },
+    {
+      "label": "clear build directory",
+      "type": "shell",
+      "command": "rm",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        "-rf",
+        "build"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "configure build",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "args": [
+        ".."
+      ],
+      "dependsOn": [
+        "create build directory"
+      ]
+    },
+    {
+      "label": "configure build and tests",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "args": [
+        "..",
+        "-DBUILD_TESTS=ON"
+      ],
+      "dependsOn": [
+        "create build directory"
+      ]
+    },
+    {
+      "label": "build project",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "args": [
+        "--build",
+        ".",
+        "--parallel",
+        "12"
+      ],
+      "dependsOn": [
+        "configure build"
+      ]
+    },
+    {
+      "label": "build project and test",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "args": [
+        "--build",
+        ".",
+        "--parallel",
+        "12"
+      ],
+      "dependsOn": [
+        "configure build and tests"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Build",
+      "dependsOn": [
+        "build project"
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
