@@ -34,7 +34,9 @@
         "cwd": "${workspaceFolder}/build"
       },
       "args": [
-        ".."
+        "..",
+        "-DCMAKE_C_COMPILER=clang-12",
+        "-DCMAKE_CXX_COMPILER=clang++-12"
       ],
       "dependsOn": [
         "create build directory"
@@ -49,6 +51,8 @@
       },
       "args": [
         "..",
+        "-DCMAKE_C_COMPILER=clang-12",
+        "-DCMAKE_CXX_COMPILER=clang++-12",
         "-DBUILD_TESTS=ON"
       ],
       "dependsOn": [
