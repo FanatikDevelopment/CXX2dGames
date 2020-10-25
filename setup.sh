@@ -39,9 +39,6 @@ sudo apt-get install -y git git-lfs
 # Install g++ & cmake
 sudo apt-get install -y build-essential g++ cmake
 
-# Install boost & googletest
-sudo apt-get install -y libboost-all-dev googletest
-
 #install LLVM & clang 12
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
