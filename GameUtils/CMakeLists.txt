@@ -50,5 +50,8 @@ if(GAMEUTILS_BUILD_TESTS)
                         PUBLIC ${CMAKE_SOURCE_DIR}/thirdparty/googletest/googlemock/include)
     target_link_libraries(${PROJECT_NAME}_test  PUBLIC ${PROJECT_NAME} gtest gmock)
     add_dependencies(${PROJECT_NAME}_test ${PROJECT_NAME})
+    enable_testing()
+    include(GoogleTest)
+    gtest_discover_tests(${PROJECT_NAME}_test)
 endif()
 
