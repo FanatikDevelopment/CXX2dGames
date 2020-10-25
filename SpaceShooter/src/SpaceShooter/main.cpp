@@ -1,5 +1,5 @@
-#include <iostream>
 #include <GameUtils/GameUtils.h>
+#include <iostream>
 
 using namespace std;
 
