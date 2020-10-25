@@ -15,7 +15,7 @@ jobs:
       with:
           submodules: true
     - name: install dependencies
-      run: ./setup.sh --no-tools
+      run: ./setup.sh --no-tools --no-update
       
     - name: Create Build Environment
       shell: bash
@@ -34,4 +34,6 @@ jobs:
     - name: Test
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: ctest -C $BUILD_TYPE
+      run: |
+        pwd
+        ctest -C $BUILD_TYPE
