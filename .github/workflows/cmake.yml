@@ -36,5 +36,4 @@ jobs:
       shell: bash
       run: |
         pwd
-        ./GameUtils/GameUtils_test
         ctest -C $BUILD_TYPE
