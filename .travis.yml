@@ -1,0 +1,5 @@
+language: cpp
+before_install:
+  - ./setup.sh --no-tools --no-update
+
+compiler: clang-12
