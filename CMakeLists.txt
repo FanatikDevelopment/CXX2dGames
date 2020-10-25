@@ -23,6 +23,7 @@ add_subdirectory(GameUtils)
 add_subdirectory(SpaceShooter)
 
 if(BUILD_TESTS)
+    enable_testing()
     #Suppress some warnings to build gtest
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-switch-enum -Wno-format-nonliteral")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-switch-default")
