@@ -16,11 +16,9 @@ do
         exit 0;
         ;;
     "--no-tools")
-        echo "find no tools option"
         NOTOOLS=true;
     ;;
     "--no-update")
-        echo "find no update option"
         NOUPDATE=true;
     ;;
   esac
@@ -29,7 +27,6 @@ done
 if [ $NOUPDATE = false ]
 then
     # Update the system
-    echo "update"
     sudo apt-get update -y
 fi
 
@@ -51,7 +48,6 @@ sudo apt-get install -y clang-format clang-tidy
 # Install staruml to create UML diagrams
 if [ $NOTOOLS = false ]
 then
-    echo "----------------------------------------tools-----------------------------------------"
     # Create a tools directory for development utilities
     mkdir -p tools
     
