@@ -7,6 +7,10 @@ project(SpaceShooter
 
 message(VERBOSE "Generating build files for ${PROJECT_NAME}")
 
+include("${CMAKE_SOURCE_DIR}/cmake/clang-cxx-tools.cmake")
+formatFiles()
+lintFiles()
+
 if(NOT DEFINED BUILD_TESTS OR BUILD_TESTS)
     option(SPACESHOOTER_BUILD_TESTS "Build ${PROJECT_NAME} tests" ON)
 endif()
@@ -26,7 +30,7 @@ add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SRC_FILES})
 
 target_include_directories(${PROJECT_NAME}
                            PUBLIC include
-                           PUBLIC ../GameUtils/include)
+                           PUBLIC ${CMAKE_SOURCE_DIR}/GameUtils/include)
 
 target_link_directories(${PROJECT_NAME} PUBLIC
                         ${CMAKE_BINARY_DIR}/GameUtils)
@@ -46,8 +50,8 @@ if(False)#SPACESHOOTER_BUILD_TESTS)
 
     target_include_directories(${PROJECT_NAME}_test
                         PUBLIC include
-                        PUBLIC ../../thirdparty/googletest/googletest/include
-                        PUBLIC ../../thirdparty/googletest/googlemock/include)
+                        PUBLIC ${CMAKE_SOURCE_DIR}/thirdparty/googletest/googletest/include
+                        PUBLIC ${CMAKE_SOURCE_DIR}/thirdparty/googletest/googlemock/include)
     target_link_libraries(${PROJECT_NAME}_test  PUBLIC gtest gmock)
     add_dependencies(${PROJECT_NAME}_test ${PROJECT_NAME})
 endif()

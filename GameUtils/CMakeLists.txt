@@ -7,6 +7,10 @@ project(GameUtils
 
 message(VERBOSE "Generating build files for ${PROJECT_NAME}")
 
+include("${CMAKE_SOURCE_DIR}/cmake/clang-cxx-tools.cmake")
+formatFiles()
+lintFiles()
+
 if(NOT DEFINED BUILD_TESTS OR BUILD_TESTS)
     option(GAMEUTILS_BUILD_TESTS "Build ${PROJECT_NAME} tests" ON)
 endif()
@@ -42,8 +46,8 @@ if(GAMEUTILS_BUILD_TESTS)
 
     target_include_directories(${PROJECT_NAME}_test
                         PUBLIC include
-                        PUBLIC ../../thirdparty/googletest/googletest/include
-                        PUBLIC ../../thirdparty/googletest/googlemock/include)
+                        PUBLIC ${CMAKE_SOURCE_DIR}/thirdparty/googletest/googletest/include
+                        PUBLIC ${CMAKE_SOURCE_DIR}/thirdparty/googletest/googlemock/include)
     target_link_libraries(${PROJECT_NAME}_test  PUBLIC ${PROJECT_NAME} gtest gmock)
     add_dependencies(${PROJECT_NAME}_test ${PROJECT_NAME})
 endif()
