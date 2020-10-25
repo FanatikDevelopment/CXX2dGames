@@ -1,11 +1,9 @@
 #include <GameUtils/GameUtils.h>
 #include <iostream>
 
-using namespace std;
-
 int main(int, char *[])
 {
-    cout << "Hello Shooter" << endl;
-    GameUtils::greet(cout);
+    std::cout << "Hello Shooter" << std::endl;
+    GameUtils::greet(std::cout);
     return 0;
 }
