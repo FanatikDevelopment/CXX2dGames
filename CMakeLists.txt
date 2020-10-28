@@ -20,7 +20,6 @@ add_subdirectory(SpaceShooter)
 
 if(BUILD_TESTS)
     enable_testing()
-    #Suppress some warnings to build gtest
     add_subdirectory(thirdparty/googletest
                      EXCLUDE_FROM_ALL)
 endif()
